@@ -1,6 +1,8 @@
 package com.infamous.all_bark_all_bite.data;
 
 import com.infamous.all_bark_all_bite.AllBarkAllBite;
+import com.infamous.all_bark_all_bite.common.compat.CompatUtil;
+import com.infamous.all_bark_all_bite.common.compat.PCCompat;
 import com.infamous.all_bark_all_bite.common.item.AdjustableInstrumentItem;
 import com.infamous.all_bark_all_bite.common.item.PetWhistleItem;
 import com.infamous.all_bark_all_bite.common.registry.ABABEntityTypes;
@@ -44,6 +46,13 @@ public class ABABLangProvider extends LanguageProvider {
         this.add(PetWhistleItem.getBoundToTooltipId(), "Bound to: %s");
         this.add(PetWhistleItem.CONTAINER_TITLE_ID, "Whistle");
         this.add(PetWhistleItem.UNBIND_BUTTON_LABEL_ID, "Unbind");
+
+        if (CompatUtil.isPCLoaded()) {
+            this.add(PCCompat.ZOMBIE_DOG.get(), "Zombie Dog");
+            this.add(PCCompat.ZOMBIE_DOG_SPAWN_EGG.get(), "Zombie Dog Spawn Egg");
+            this.add(PCCompat.SKELETON_DOG.get(), "Skeleton Dog");
+            this.add(PCCompat.SKELETON_DOG_SPAWN_EGG.get(), "Skeleton Dog Spawn Egg");
+        }
     }
 
     private void addWhistleWithDescription(RegistryObject<Instrument> whistle, String id, String description) {

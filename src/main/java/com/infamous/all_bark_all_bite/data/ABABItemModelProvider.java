@@ -1,6 +1,8 @@
 package com.infamous.all_bark_all_bite.data;
 
 import com.infamous.all_bark_all_bite.AllBarkAllBite;
+import com.infamous.all_bark_all_bite.common.compat.CompatUtil;
+import com.infamous.all_bark_all_bite.common.compat.PCCompat;
 import com.infamous.all_bark_all_bite.common.registry.ABABItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
@@ -24,6 +26,11 @@ public class ABABItemModelProvider extends ItemModelProvider {
         this.spawnEgg(ABABItems.HOUNDMASTER_SPAWN_EGG);
 
         this.basicItem(ABABItems.WHISTLE.get());
+
+        if (CompatUtil.isPCLoaded()) {
+            this.spawnEgg(PCCompat.ZOMBIE_DOG_SPAWN_EGG);
+            this.spawnEgg(PCCompat.SKELETON_DOG_SPAWN_EGG);
+        }
     }
 
     private void spawnEgg(RegistryObject<Item> item) {

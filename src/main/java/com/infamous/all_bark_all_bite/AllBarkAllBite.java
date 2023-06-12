@@ -1,9 +1,12 @@
 package com.infamous.all_bark_all_bite;
 
+import com.infamous.all_bark_all_bite.common.compat.CompatUtil;
 import com.infamous.all_bark_all_bite.common.registry.*;
 import com.infamous.all_bark_all_bite.config.ABABConfig;
+import com.infamous.all_bark_all_bite.common.compat.PCCompat;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -42,5 +45,9 @@ public class AllBarkAllBite
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, ABABConfig.COMMON_SPEC, String.format("%s/%s.toml", MODID, "common"));
         modLoadingContext.registerConfig(ModConfig.Type.CLIENT, ABABConfig.CLIENT_SPEC, String.format("%s/%s.toml", MODID, "client"));
         modLoadingContext.registerConfig(ModConfig.Type.SERVER, ABABConfig.SERVER_SPEC, String.format("%s.toml", MODID));
+
+        if (CompatUtil.isPCLoaded()) {
+            PCCompat.loadClass();
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.infamous.all_bark_all_bite.data;
 
 import com.infamous.all_bark_all_bite.common.ABABTags;
+import com.infamous.all_bark_all_bite.common.compat.CompatUtil;
+import com.infamous.all_bark_all_bite.common.compat.PCCompat;
 import com.infamous.all_bark_all_bite.common.registry.ABABEntityTypes;
 import com.infamous.all_bark_all_bite.common.registry.ABABItems;
 import net.minecraft.data.loot.EntityLoot;
@@ -34,6 +36,11 @@ public class ABABEntityLoot extends EntityLoot {
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
                                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F))))
                         .when(LootItemKilledByPlayerCondition.killedByPlayer())));
+
+        if (CompatUtil.isPCLoaded()) {
+            this.add(PCCompat.ZOMBIE_DOG.get(), LootTable.lootTable());
+            this.add(PCCompat.SKELETON_DOG.get(), LootTable.lootTable());
+        }
     }
 
     @Override

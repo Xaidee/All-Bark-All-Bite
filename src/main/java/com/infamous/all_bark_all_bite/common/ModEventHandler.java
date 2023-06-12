@@ -1,6 +1,10 @@
 package com.infamous.all_bark_all_bite.common;
 
 import com.infamous.all_bark_all_bite.AllBarkAllBite;
+import com.infamous.all_bark_all_bite.common.compat.CompatUtil;
+import com.infamous.all_bark_all_bite.common.compat.PCCompat;
+import com.infamous.all_bark_all_bite.common.compat.entity.SkeletonDog;
+import com.infamous.all_bark_all_bite.common.compat.entity.ZombieDog;
 import com.infamous.all_bark_all_bite.common.entity.dog.Dog;
 import com.infamous.all_bark_all_bite.common.entity.houndmaster.Houndmaster;
 import com.infamous.all_bark_all_bite.common.entity.illager_hound.IllagerHound;
@@ -51,6 +55,10 @@ public class ModEventHandler {
         event.put(ABABEntityTypes.DOG.get(), Dog.createAttributes().build());
         event.put(ABABEntityTypes.ILLAGER_HOUND.get(), IllagerHound.createAttributes().build());
         event.put(ABABEntityTypes.HOUNDMASTER.get(), Houndmaster.createAttributes().build());
+        if (CompatUtil.isPCLoaded()) {
+            event.put(PCCompat.ZOMBIE_DOG.get(), ZombieDog.createAttributes().build());
+            event.put(PCCompat.SKELETON_DOG.get(), SkeletonDog.createAttributes().build());
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

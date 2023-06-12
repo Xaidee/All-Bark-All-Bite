@@ -9,6 +9,7 @@ public class CompatUtil {
     public static final String MUTANT_MORE_MODID = "mutantmore";
 
     public static final String FARMERS_DELIGHT_MODID = "farmersdelight";
+    public static final String PET_CEMETERY_MODID = "pet_cemetery";
 
     public static boolean isRWLoaded() {
        return ModList.get().isLoaded(REVAMPED_WOLF_MODID);
@@ -25,5 +26,7 @@ public class CompatUtil {
     public static boolean isMMLoaded(){
         return ModList.get().isLoaded(MUTANT_MORE_MODID);
     }
+
+    public static boolean isPCLoaded() { return ModList.get().isLoaded(PET_CEMETERY_MODID); }
 
 }
